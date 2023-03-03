@@ -18,7 +18,54 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-xl-12 mb-2">
+                        <div class="col-lg-2">
+                            <h3 class="text-uppercase text-center fw-bold judulPraktek" style="margin-top:21px; margin-bottom: 21px;">Jam Praktek</h3>
+                            <div class="table-responsive" style="font-size: 0.7rem;">
+                                <table id="example2" class="table table-hover table-striped table-bordered table-sm" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr class="bg-secondary border-dark">
+                                            <th class=" text-center">No</th>
+                                            <th class=" text-center">Jam Tersedia</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $no = 1;
+                                        $id_tanggal = $this->uri->segment(3);
+
+                                        // $this->db->select('jam');
+                                        // $this->db->from('jam_periksa');
+                                        // $this->db->where('ket_jam', 'praktek');
+                                        // $this->db->order_by('jam');
+                                        // $jamPraktek = $this->db->get()->result();
+
+                                        // $this->db->select('jam');
+                                        // $this->db->from('jadwal_periksa');
+                                        // $this->db->join('jam_periksa', 'jam_periksa.id_jam = jadwal_periksa.id_jam');
+                                        // $this->db->where('jadwal_periksa.id_tanggal', $id_tanggal);
+                                        // $this->db->order_by('jam_periksa.jam');
+                                        // $jamHadir =  $this->db->get()->result();
+
+                                        $jamPraktek = $this->db->query("SELECT jam FROM jam_periksa WHERE ket_jam = 'praktek' ORDER BY jam")->result();
+                                        $jamHadir = $this->db->query("SELECT jam FROM jadwal_periksa JOIN jam_periksa ON jam_periksa.id_jam = jadwal_periksa.id_jam WHERE jadwal_periksa.id_tanggal = '$id_tanggal' ORDER BY jam_periksa.jam")->result();
+
+                                        $jamKosong = $this->db->query("SELECT jam FROM jam_periksa WHERE ket_jam = 'praktek'
+                                        EXCEPT
+                                        SELECT jam FROM jadwal_periksa JOIN jam_periksa ON jam_periksa.id_jam = jadwal_periksa.id_jam WHERE jadwal_periksa.id_tanggal = '$id_tanggal'
+                                        ")->result();
+
+                                        foreach ($jamKosong as $row) : ?>
+                                            <tr>
+                                                <td class="fw-bold text-center"><?= $no++ ?></td>
+                                                <td class="fw-bold text-center"><?= $row->jam ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- <?php echo $jamHadir; ?> -->
+                        <div class="col-xl-10 mb-2">
                             <?php $tanggal = $this->uri->segment(4);
                             $pecahkan = explode('-', $tanggal);
                             $bln = $pecahkan[1];
@@ -84,25 +131,34 @@
                                             <th class=" text-center">Nama Pasien</th>
                                             <th class=" text-center">Alamat</th>
                                             <th class=" text-center">J.Kelamin</th>
-                                            <th class=" text-center">Action</th>
+                                            <th class=" text-center">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $no = 1;
                                         foreach ($detailPasien as $row) :
+                                            $status = $row->status_pasien;
+                                            $statusPasien = [
+                                                '0' => 'Belum hadir',
+                                                '1' => 'Hadir',
+                                                '2' => 'Proses',
+                                                '3' => 'Selesai',
+                                                '4' => 'Batal'
+                                            ];
                                         ?>
                                             <tr>
                                                 <td class="fw-bold text-center"><?= $no++ ?></td>
-                                                <td class="fw-bold"><?= $row->jam ?></td>
+                                                <td class="fw-bold text-center"><?= $row->jam ?></td>
                                                 <td class="fw-bold"><?= $row->nama_pasien ?></td>
                                                 <td class="fw-bold"><?= $row->alamat_pasien ?></td>
-                                                <td class="fw-bold"><?= $row->jenkel_pasien ?></td>
-                                                <td class="text-center">
+                                                <td class="fw-bold text-center"><?= $row->jenkel_pasien ?></td>
+                                                <td class="fw-bold text-center"><?= $statusPasien[$status] ?></td>
+                                                <!-- <td class="text-center">
                                                     <a href="<?= base_url(); ?>dashboard/edit/<?= $row->id_jam; ?>"><i class="fas fa-fw fa-edit" data-bs-toggle="tooltip" title="Edit Data"></i></a>
                                                     <a href="<?= ($this->session->userdata('level') == 'SuperAdmin') ? base_url('dashboard/hapus/') : 'javascript:void(0)' ?><?= $row->id_jam; ?>" class="sweet text-danger" data-bs-toggle="tooltip" title="Hapus data"><i class="fas fa-fw fa-trash"></i></a>
                                                     <a href="<?= base_url(); ?>donasi/detail/<?= $row->id_jam; ?>" class="text-success" data-bs-toggle="tooltip" title="Detail data"><i class="fa-solid fa-circle-info"></i></a>
-                                                </td>
+                                                </td> -->
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>

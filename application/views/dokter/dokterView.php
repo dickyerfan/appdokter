@@ -104,9 +104,8 @@
                                                 <td class=" text-end"><?= number_format($row->tagihan, '0', ',', '.')  ?>,-</td>
                                                 <td class="text-center" style="<?= $row->status_pasien == 3 ? 'color:red;background-color:lightgrey;' : '' ?>"><?= $statusPasien[$status]; ?></td>
                                                 <td class="text-center">
-                                                    <a href="<?= $row->status_pasien == 2 ? base_url('dokter/inputTindakanDokter/') : 'javascript:void(0)' ?><?= $row->id_jadwal ?>" class="text-primary"><i class="fas fa-fw fa-check-circle" data-bs-toggle="tooltip" title="Update Status Pasien"></i></a>
-                                                    <!-- <a href="<?= base_url(); ?>dashboard/edit/<?= $row->id_jadwal; ?>" class="text-success"><i class="fas fa-fw fa-clipboard" data-bs-toggle="tooltip" title="Proses Periksa"></i></a>
-                                                    <a href="<?= base_url(); ?>dashboard/edit/<?= $row->id_jadwal; ?>" class="text-danger"><i class="fas fa-fw fa-edit" data-bs-toggle="tooltip" title="Selesai"></i></a> -->
+                                                    <a href="<?= $row->status_pasien == 2 && $row->keluhan == '' ? base_url('dokter/inputTindakanDokter/') : 'javascript:void(0)' ?><?= $row->id_jadwal ?>" class="text-primary"><i class="fas fa-fw fa-check-circle" data-bs-toggle="tooltip" title="Update Status Pasien"></i></a>
+                                                    <a href="<?= $row->status_pasien == 2 && $row->keluhan != NULL ? base_url('dokter/pembayaran/') : 'javascript:void(0)' ?><?= $row->id_jadwal ?>" class="text-primary"><i class="fas fa-fw fa-dollar" data-bs-toggle="tooltip" title="Pembayaran"></i></a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

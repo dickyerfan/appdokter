@@ -152,6 +152,18 @@
                                                                     <h6><?= $hariIndo[$hari]; ?></h6>
                                                                 </a>
                                                             </div>
+                                                            <div class="col">
+                                                                <?php
+                                                                $jumlahJam = $this->db->get_where('jam_periksa', ['ket_jam' => 'Praktek'])->num_rows();
+                                                                $id_tanggal = $row->id_tanggal;
+                                                                $jumlahPasien = $this->db->get_where('jadwal_periksa', ['id_tanggal' => $id_tanggal])->num_rows();
+                                                                $sisaJam = $jumlahJam - $jumlahPasien;
+                                                                if ($sisaJam == 0) {
+                                                                    $sisaJam = 'full';
+                                                                }
+                                                                ?>
+                                                                <p style="font-size: 0.5rem;"><?= $sisaJam ?></p>
+                                                            </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col">

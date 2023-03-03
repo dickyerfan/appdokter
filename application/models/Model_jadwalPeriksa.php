@@ -52,16 +52,16 @@ class Model_jadwalPeriksa extends CI_Model
         return $this->db->get()->result();
     }
 
-    public function getPasien()
-    {
-        $this->db->select('*');
-        $this->db->from('jadwal_periksa');
-        $this->db->join('data_pasien', 'jadwal_periksa.id_pasien = data_pasien.id_pasien');
-        $this->db->join('jam_periksa', 'jadwal_periksa.id_jam = jam_periksa.id_jam');
-        $this->db->join('tanggal_pasien', 'jadwal_periksa.id_tanggal = tanggal_pasien.id_tanggal');
-        $this->db->order_by('jam_periksa.jam');
-        return $this->db->get()->result();
-    }
+    // public function getJamKosong($id_jam)
+    // {
+    //     $this->db->select('*');
+    //     $this->db->from('jam_periksa');
+    //     $this->db->join('jadwal_periksa', 'jadwal_periksa.id_jam = jam_periksa.id_jam');
+    //     $this->db->join('tanggal_pasien', 'jadwal_periksa.id_tanggal = tanggal_pasien.id_tanggal');
+    //     $this->db->where('jadwal_periksa.id_jam', $id_jam);
+    //     $this->db->order_by('jam_periksa.jam');
+    //     return $this->db->get()->result();
+    // }
 
     public function tambahJadwalPasien()
     {
@@ -83,10 +83,4 @@ class Model_jadwalPeriksa extends CI_Model
         ];
         $this->db->insert('jadwal_periksa', $data);
     }
-
-    // public function hapusData($id)
-    // {
-    //     $this->db->where('id_pasien', $id);
-    //     $this->db->delete('data_pasien');
-    // }
 }

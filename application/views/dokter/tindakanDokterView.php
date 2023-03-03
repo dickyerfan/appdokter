@@ -70,7 +70,11 @@
                                     </div>
                                 </div>
                             <?php endforeach; ?>
-                            <div class="col-lg-4">
+                            <div class="col-lg-4 mt-2">
+                                <!-- <div class="form-group mb-2">
+                                    <label class="mb-1">Tanggal Periksa :</label>
+                                    <input type="text" class="form-control kecilinFont" value="<?= $tanggalFix ?>" disabled>
+                                </div> -->
                                 <div class="form-group mb-2">
                                     <?php $id_pasien = $this->uri->segment(3); ?>
                                     <input type="hidden" class="form-control" id="id_jadwal" name="id_jadwal" placeholder="Masukkan ID Pasien" value="<?= $id_pasien; ?>">
@@ -94,7 +98,7 @@
                                     </select>
                                     <small class="form-text text-danger pl-3"><?= form_error('id_tindakan'); ?></small>
                                 </div>
-                                <div class="form-group mb-2">
+                                <!-- <div class="form-group mb-2">
                                     <label for="tagihan" class="form-label">Tagihan :</label>
                                     <select name="tagihan" id="tagihan" class="form-select select2">
                                         <option value=""></option>
@@ -105,7 +109,7 @@
                                         <?php endforeach; ?>
                                     </select>
                                     <small class="form-text text-danger pl-3"><?= form_error('tagihan'); ?></small>
-                                </div>
+                                </div> -->
                                 <div class="form-group mb-2">
                                     <label for="jumlah" class="mb-1">Jumlah Tindakan :</label>
                                     <input type="text" class="form-control kecilinFont" id="jumlah" name="jumlah" placeholder="Masukkan jumlah Tindakan" value="<?= set_value('jumlah'); ?>">

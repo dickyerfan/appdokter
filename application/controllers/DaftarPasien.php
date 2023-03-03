@@ -49,12 +49,12 @@ class DaftarPasien extends CI_Controller
         $this->form_validation->set_rules('jenkel_pasien', 'Jenis Kelamin Pasien', 'required|trim');
         $this->form_validation->set_rules('no_ktp', 'No KTP', 'required|trim|numeric|exact_length[16]|is_unique[data_pasien.no_ktp]');
         $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required|trim');
-        // $this->form_validation->set_rules('bpjs', 'No BPJS', 'required|trim|numeric|regex_match[/^[0-9]{13}+$/]|is_unique[data_pasien.bpjs]');
+        $this->form_validation->set_rules('bpjs', 'No BPJS', 'trim|numeric|regex_match[/^[0-9]{13}+$/]|is_unique[data_pasien.bpjs]');
         $this->form_validation->set_message('required', '%s masih kosong');
         $this->form_validation->set_message('exact_length', '%s harus 16 angka');
         $this->form_validation->set_message('min_length', '%s minimal 10 angka');
         $this->form_validation->set_message('numeric', '%s harus berupa angka');
-        // $this->form_validation->set_message('regex_match', '%s harus 13 angka');
+        $this->form_validation->set_message('regex_match', '%s harus 13 angka');
         $this->form_validation->set_message('is_unique', '%s sudah terdaftar');
 
         if ($this->form_validation->run() == false) {

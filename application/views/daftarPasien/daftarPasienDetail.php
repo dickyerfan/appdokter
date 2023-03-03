@@ -26,7 +26,9 @@
                             ?>
                                 <div class="card p-1 shadow">
                                     <div class="card text-dark bg-info mb-1">
-                                        <div class="card-header text-center">DATA PASIEN</span></div>
+                                        <div class="card-header text-center mt-1">
+                                            <h4>DATA PASIEN</h4>
+                                        </div>
                                     </div>
                                     <div class="card text-dark bg-light mb-1">
                                         <div class="card-header">

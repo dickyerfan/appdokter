@@ -27,25 +27,23 @@
                                     <select name="id_jam" id="id_jam" class="form-select select2">
                                         <option value="">Pilih Jam</option>
                                         <?php
-                                        $jam = $this->db->get_where('jam_periksa', ['ket_jam' => 'Praktek'])->result();
-                                        foreach ($jam as $row) : ?>
+                                        // $this->db->select('*');
+                                        // $this->db->from('jam_periksa');
+                                        // $this->db->where('ket_jam', 'Praktek');
+                                        // $this->db->order_by('jam', 'ASC');
+                                        // $jam = $this->db->get()->result();
+                                        $id_tanggal = $this->uri->segment(3);
+                                        $jamKosong = $this->db->query("SELECT jam_periksa.id_jam, jam FROM jam_periksa WHERE ket_jam = 'praktek'
+                                        EXCEPT
+                                        SELECT jam_periksa.id_jam, jam FROM jadwal_periksa JOIN jam_periksa ON jam_periksa.id_jam = jadwal_periksa.id_jam WHERE jadwal_periksa.id_tanggal = '$id_tanggal'
+                                        ")->result();
+
+                                        foreach ($jamKosong as $row) : ?>
                                             <option value="<?= $row->id_jam ?>"><?= $row->jam ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <small class="form-text text-danger pl-3"><?= form_error('id_jam'); ?></small>
-                                    <!-- <label for="id_tanggal" class="form-label">Tanggal Praktek</label>
-                                    <select name="id_tanggal" id="id_tanggal" class="form-select select2">
-                                        <option value="">Pilih Tanggal</option>
-                                        <?php
-                                        $id_tanggal = $this->uri->segment(3);
-                                        $tanggal = $this->db->get('tanggal_pasien')->result();
-                                        foreach ($tanggal as $row) : ?>
-                                            <option value="<?= $row->id_tanggal ?>" <?= $row->id_tanggal == $id_tanggal ? 'selected' : '' ?>><?= $row->tanggal ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                    <small class="form-text text-danger pl-3"><?= form_error('id_tanggal'); ?></small> -->
                                     <input type="hidden" class="form-control" id="id_tanggal" name="id_tanggal" value="<?= $this->uri->segment(3) ?>">
-                                    <small class="form-text text-danger pl-3"><?= form_error('id_tanggal'); ?></small>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-sm" name="inputJam">Simpan</button>
                             </form>
