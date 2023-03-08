@@ -6,45 +6,33 @@
                 <div class="nav">
                     <a class="nav-link" href="<?= base_url('dokter') ?>">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt fa-fw"></i></div>
-                        Dashboard
+                        <div style="font-size: 0.8rem;">Dashboard</div>
                     </a>
                     <a class="nav-link" href="<?= base_url('daftarPasien') ?>">
                         <div class="sb-nav-link-icon"><i class="fas fa-users fa-fw"></i></div>
-                        Daftar Pasien
+                        <div style="font-size: 0.8rem;">Daftar Pasien</div>
                     </a>
                     <a class="nav-link" href="<?= base_url('tindakan') ?>">
                         <div class="sb-nav-link-icon"><i class="fas fa-tools fa-fw"></i></div>
-                        Tindakan
+                        <div style="font-size: 0.8rem;">Tindakan</div>
                     </a>
-                    <!-- <a class="nav-link" href="<?= base_url('laporanPengguna') ?>">
-                        <div class="sb-nav-link-icon"><i class="fas fa-book fa-fw"></i></div>
-                        Laporan
-                    </a> -->
-                    <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#dataUser" aria-expanded="false" aria-controls="dataUser">
-                        <div class="sb-nav-link-icon"><i class="fas fa-user fa-fw"></i></div>
-                        Data User
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    <a class="nav-link" href="<?= base_url('pendapatan') ?>">
+                        <div class="sb-nav-link-icon"><i class="fas fa-donate fa-fw"></i></div>
+                        <div style="font-size: 0.8rem;">Pendapatan</div>
                     </a>
-                    <div class="collapse" id="dataUser" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="<?= base_url('user/admin') ?>">Data Admin</a>
-                            <a class="nav-link" href="<?= base_url('user/user') ?>">Data User</a>
-                        </nav>
-                    </div> -->
-                    <!-- <a class="nav-link" href="#">
+                    <a class="nav-link" href="<?= base_url('backup') ?>">
                         <div class="sb-nav-link-icon"><i class="fas fa-database fa-fw"></i></div>
-                        Backup & Restore
-                    </a> -->
-                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                        <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
-                        Logout
+                        <div style="font-size: 0.8rem;">Backup</div>
                     </a>
-
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                        <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt fa-fw"></i></div>
+                        <div style="font-size: 0.8rem;"> Logout</div>
+                    </a>
                 </div>
             </div>
-            <!-- <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
-                    Start Bootstrap
-                </div> -->
+            <div class="sb-sidenav-footer">
+                <div class="small" style="font-size: 0.7rem;">Anda Login sebagai:</div>
+                <div class="small" style="font-size: 0.7rem;"><?= $this->session->userdata('level'); ?></div>
+            </div>
         </nav>
     </div>

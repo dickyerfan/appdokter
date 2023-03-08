@@ -13,11 +13,18 @@ class Model_tindakan extends CI_Model
 
     public function tambahTindakan()
     {
-        $data = [
+        $data1 = [
             'nama_tindakan' => $this->input->post('nama_tindakan', true),
-            'harga' => $this->input->post('harga', true)
+            'harga' => $this->input->post('harga', true),
+            'ket_tindakan' => $this->input->post('ket_tindakan', true)
         ];
-        $this->db->insert('tindakan', $data);
+        $data2 = [
+            'nama_tindakan2' => $this->input->post('nama_tindakan', true),
+            'harga2' => $this->input->post('harga', true),
+            'ket_tindakan2' => $this->input->post('ket_tindakan', true)
+        ];
+        $this->db->insert('tindakan', $data1);
+        $this->db->insert('tindakan2', $data2);
     }
 
     public function editTindakan()
@@ -28,14 +35,28 @@ class Model_tindakan extends CI_Model
             'ket_tindakan' => $this->input->post('ket_tindakan', true),
             'status' => $this->input->post('status', true)
         ];
+
+        $data2 = [
+            'nama_tindakan2' => $this->input->post('nama_tindakan', true),
+            'harga2' => $this->input->post('harga', true),
+            'ket_tindakan2' => $this->input->post('ket_tindakan', true),
+            'status2' => $this->input->post('status', true)
+        ];
+
         $this->db->where('id_tindakan', $_POST['id_tindakan']);
         $this->db->update('tindakan', $data);
+
+        $this->db->where('id_tindakan2', $_POST['id_tindakan']);
+        $this->db->update('tindakan2', $data2);
     }
 
     public function hapusTindakan($id)
     {
         $this->db->where('id_tindakan', $id);
         $this->db->delete('tindakan');
+
+        $this->db->where('id_tindakan2', $id);
+        $this->db->delete('tindakan2');
     }
 
     // public function editStatus()

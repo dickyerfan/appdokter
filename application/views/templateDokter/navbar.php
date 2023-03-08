@@ -13,17 +13,17 @@
     </form>
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
             <a class="nav-link fw-bold" id="notifPesan" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="text-warning btn btn-outline-light btn-sm">1</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notifPesan">
                 <li><a class="dropdown-item fst-italic" style="font-size: 0.8rem;" href="#"><i class="fa-solid fa-user fa-fw"></i> Dea Afrizal Hadir</a></li>
             </ul>
-        </li>
+        </li> -->
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle fw-bold logo" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?= $this->session->userdata('fullname'); ?></a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <a class="nav-link dropdown-toggle fw-bold logo" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.8rem;"><?= $this->session->userdata('fullname'); ?></a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="font-size: 0.8rem;">
                 <li><a class="dropdown-item" href="<?= base_url('password') ?>"><i class="fa-solid fa-unlock-keyhole fa-fw"></i> Ganti Password</a></li>
                 <li><a class="dropdown-item" href="<?= base_url('password/profil') ?>"><i class="fa-solid fa-id-card fa-fw"></i> Profil</a></li>
                 <li>

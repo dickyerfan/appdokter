@@ -44,9 +44,11 @@ class Dokter extends CI_Controller
     {
         $data['title'] = 'Tindakan Dokter';
         $data['tindakan'] = $this->db->get('tindakan')->result();
-        $this->form_validation->set_rules('id_tindakan', 'Tindakan', 'required|trim');
+        $this->form_validation->set_rules('id_tindakan', 'Tindakan 1', 'required|trim');
+        // $this->form_validation->set_rules('id_tindakan2', 'Tindakan 2', 'required|trim');
         $this->form_validation->set_rules('keluhan', 'Keluhan', 'required|trim');
-        $this->form_validation->set_rules('jumlah', 'Jumlah', 'required|trim|numeric');
+        $this->form_validation->set_rules('jumlah', 'Jumlah tindakan 1', 'required|trim|numeric');
+        // $this->form_validation->set_rules('jumlah2', 'Jumlah tindakan 2', 'required|trim|numeric');
         $this->form_validation->set_message('required', '%s masih kosong');
         $this->form_validation->set_message('numeric', '%s harus berupa angka');
 
@@ -73,10 +75,11 @@ class Dokter extends CI_Controller
     public function pembayaran()
     {
         $data['title'] = 'Pembayaran';
-        $data['tindakan'] = $this->db->get('tindakan')->result();
+        // $data['tindakan'] = $this->db->get('tindakan')->result();
         $this->form_validation->set_rules('tagihan', 'Tagihan', 'required|trim');
-        $this->form_validation->set_rules('diskon', 'Diskon', 'required|trim');
+        $this->form_validation->set_rules('diskon', 'Jumlah Diskon / Potongan', 'required|trim|numeric');
         $this->form_validation->set_message('required', '%s masih kosong');
+        $this->form_validation->set_message('numeric', '%s harus berupa angka');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templateDokter/header', $data);

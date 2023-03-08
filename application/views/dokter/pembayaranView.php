@@ -46,7 +46,7 @@
                                 $tahun = $tanggal[0];
                                 $tanggalFix = $day . ' ' . $bulanList[$bulan] . ' ' . $tahun;
                             ?>
-                                <div class="col-lg-4 mt-2">
+                                <div class="col-lg-5 mt-2">
                                     <div class="card p-1 shadow">
                                         <div class="card text-dark bg-info mb-1">
                                             <div class="card-header text-center mt-1">
@@ -73,7 +73,7 @@
                                     </div>
                                 </div>
                             <?php endforeach; ?>
-                            <div class="col-lg-4 mt-2">
+                            <div class="col-lg-7 mt-2">
                                 <div class="card p-1 shadow">
                                     <div class="form-group mb-2">
                                         <?php $id_pasien = $this->uri->segment(3); ?>
@@ -85,6 +85,7 @@
                                     $this->db->select('*');
                                     $this->db->from('kunjungan_pasien');
                                     $this->db->join('tindakan', 'kunjungan_pasien.id_tindakan= tindakan.id_tindakan');
+                                    $this->db->join('tindakan2', 'kunjungan_pasien.id_tindakan2 = tindakan2.id_tindakan2', 'left');
                                     $this->db->where('id_jadwal', $id_jadwal);
                                     $data = $this->db->get()->result();
                                     foreach ($data as $row) : ?>
@@ -95,11 +96,40 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="card text-dark bg-light mb-1">
-                                                <div class="card-header">Tindakan : <br><?= $row->nama_tindakan; ?></div>
+                                                <div class="card-header">
+                                                    <div class="row">
+                                                        <div class="col-lg-7">
+                                                            <div class="">Tindakan : <br>1. <?= $row->nama_tindakan; ?></div>
+                                                        </div>
+                                                        <div class="col-lg-2">
+                                                            <p class="text-center mt-3"><?= $row->jumlah; ?> <?= $row->ket_tindakan ?></p>
+                                                            <input type="hidden" class="form-control kecilinFont" id="jumlah" name="jumlah" value="<?= $row->jumlah; ?>">
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <p class="text-center text-danger mt-3">@ Rp. <?= number_format($row->harga, '0', ',', '.'); ?>,-</p>
+                                                            <input type="hidden" name="tagihan" id="tagihan" value="<?= $row->harga; ?>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-header">
+                                                    <div class="row">
+                                                        <div class="col-lg-7">
+                                                            <div class=""><?= $row->nama_tindakan2 == '' ? '' : '2.' ?> <?= $row->nama_tindakan2; ?></div>
+                                                        </div>
+                                                        <div class="col-lg-2">
+                                                            <p class="text-center"><?= $row->jumlah2; ?> <?= $row->ket_tindakan2 ?></p>
+                                                            <input type="hidden" class="form-control kecilinFont" id="jumlah2" name="jumlah2" value="<?= $row->jumlah2; ?>">
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <p class="text-center text-danger">@ Rp. <?= number_format($row->harga2, '0', ',', '.'); ?>,-</p>
+                                                            <input type="hidden" name="tagihan2" id="tagihan2" value="<?= $row->harga2; ?>">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                 </div>
-                                <div class="card p-1 shadow">
+                                <!-- <div class="card p-1 shadow">
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-lg-6 text-center">
@@ -111,9 +141,9 @@
                                         </div>
                                         <input type="hidden" name="tagihan" id="tagihan" value="<?= $row->harga; ?>">
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="card p-1 shadow">
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <div class="row">
                                             <div class="col-lg-6 text-center">
                                                 <label for="jumlah" class="mt-2 fw-bold">Jumlah Tindakan :</label>
@@ -122,22 +152,23 @@
                                                 <h3 class="text-danger text-end pe-3"><?= $row->jumlah; ?> </h3>
                                                 <input type="hidden" class="form-control kecilinFont" id="jumlah" name="jumlah" value="<?= $row->jumlah; ?>">
                                             </div>
-                                            <small class="form-text text-danger pl-3"><?= form_error('jumlah'); ?></small>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <h6 class="text-center">Total Tagihan :</h6>
                                         </div>
                                         <div class="col-lg-6">
-                                            <h6 class="text-end text-primary" id="total_tagihan">
+                                            <h5 class="text-center text-primary" id="total_tagihan">
                                                 <?php
                                                 $harga = $row->harga;
+                                                $harga2 = $row->harga2;
                                                 $jumlah = $row->jumlah;
-                                                $totalTagihan = $harga * $jumlah;
+                                                $jumlah2 = $row->jumlah2;
+                                                $totalTagihan = ($harga * $jumlah) + ($harga2 * $jumlah2);
                                                 echo 'Rp. ' . number_format($totalTagihan, '0', ',', '.') . ',-';
                                                 ?>
-                                            </h6>
+                                            </h5>
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
@@ -147,12 +178,12 @@
                                             <label for="diskon" class="mt-2 fw-bold">Potongan / Diskon :</label>
                                         </div>
                                         <div class="col-lg-6 text-center">
-                                            <input type="text" class="form-control kecilinFont" id="diskon" name="diskon" placeholder="Masukkan Diskon" onchange="getDiskon()">
+                                            <input type="text" class="form-control kecilinFont" id="diskon" name="diskon" placeholder="Masukkan nol jika tidak ada diskon" onchange="getDiskon()">
                                         </div>
-                                        <small class="form-text text-danger pl-3"><?= form_error('diskon'); ?></small>
+                                        <small class="form-text text-danger text-center"><?= form_error('diskon'); ?></small>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="col-lg-6">
                                         <p class="text-center">Yang Harus Dibayar :</p>
                                     </div>
@@ -161,13 +192,12 @@
 
                                         </h6>
                                     </div>
-                                </div>
-                                </div>
+                                </div> -->
                                 <div class="card p-1 shadow">
                                     <button class="btn btn-primary btn-sm btn-block mt-1 kecilinFont" name="tambah" type="submit"><i class="fas fa-dollar"></i> Bayar</button>
                                 </div>
+                                </div>
                             </div>
-                        </div>
                     </form>
                 </div>
             </div>

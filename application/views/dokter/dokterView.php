@@ -52,10 +52,9 @@
                     </marquee> -->
                     <div class="row">
                         <div class="col-lg-12">
-
                             <div class="row">
                                 <div class="col-md-10">
-                                    <h3 class="text-uppercase text-center judulPraktek">Daftar Pasien Hari ini</h3>
+                                    <h3 class="text-uppercase judulPraktek">Daftar Pasien Hari ini</h3>
                                 </div>
                                 <div class="col-md-2"><a href="<?= base_url('dokter') ?>" class="btn btn-outline-primary btn-sm float-end mb-1" style="font-size:0.7rem;">Refresh</a></div>
                             </div>
@@ -71,6 +70,7 @@
                                             <th class=" text-center">Jenis Kelamin</th>
                                             <th class=" text-center">Keluhan</th>
                                             <th class=" text-center">Tindakan</th>
+                                            <th class=" text-center">Tindakan 2</th>
                                             <th class=" text-center">Tagihan</th>
                                             <th class=" text-center">Status</th>
                                             <th class=" text-center">Action</th>
@@ -101,6 +101,7 @@
                                                 <td class=" text-center"><?= $row->jenkel_pasien ?></td>
                                                 <td class=""><?= $row->keluhan ?></td>
                                                 <td class=""><?= $row->nama_tindakan ?></td>
+                                                <td class=""><?= $row->nama_tindakan2 ?></td>
                                                 <td class=" text-end"><?= number_format($row->tagihan, '0', ',', '.')  ?>,-</td>
                                                 <td class="text-center" style="<?= $row->status_pasien == 3 ? 'color:red;background-color:lightgrey;' : '' ?>"><?= $statusPasien[$status]; ?></td>
                                                 <td class="text-center">
@@ -111,6 +112,152 @@
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                    // $masuk = $this->db->query("SELECT sum(jml_transaksi) as masuk FROM transaksi WHERE jenis_transaksi = 'Penerimaan' AND kode_saldo = 0");
+                    // foreach ($masuk->result() as $row) {
+                    //     $masuk = $row->masuk;
+                    // }
+
+                    $tgl = date('d');
+                    $bulan = date('m');
+                    $tahun = date('Y');
+                    $this->db->select('*');
+                    $this->db->from('jadwal_periksa');
+                    $this->db->join('data_pasien', 'jadwal_periksa.id_pasien = data_pasien.id_pasien');
+                    $this->db->join('jam_periksa', 'jadwal_periksa.id_jam = jam_periksa.id_jam');
+                    $this->db->join('tanggal_pasien', 'jadwal_periksa.id_tanggal = tanggal_pasien.id_tanggal');
+                    $this->db->join('kunjungan_pasien', 'jadwal_periksa.id_jadwal = kunjungan_pasien.id_jadwal', 'left');
+                    $this->db->join('tindakan', 'tindakan.id_tindakan = kunjungan_pasien.id_tindakan', 'left');
+                    $this->db->join('tindakan2', 'tindakan2.id_tindakan2 = kunjungan_pasien.id_tindakan2', 'left');
+                    $this->db->where('DAY(tanggal)', $tgl);
+                    $this->db->where('MONTH(tanggal)', $bulan);
+                    $this->db->where('YEAR(tanggal)', $tahun);
+                    $this->db->where('status_pasien', 3);
+                    $this->db->order_by('jam_periksa.jam');
+                    $jumlahPasienHariIni = $this->db->get()->num_rows();
+
+                    $this->db->select('*');
+                    $this->db->from('jadwal_periksa');
+                    $this->db->join('data_pasien', 'jadwal_periksa.id_pasien = data_pasien.id_pasien');
+                    $this->db->join('jam_periksa', 'jadwal_periksa.id_jam = jam_periksa.id_jam');
+                    $this->db->join('tanggal_pasien', 'jadwal_periksa.id_tanggal = tanggal_pasien.id_tanggal');
+                    $this->db->join('kunjungan_pasien', 'jadwal_periksa.id_jadwal = kunjungan_pasien.id_jadwal', 'left');
+                    $this->db->join('tindakan', 'tindakan.id_tindakan = kunjungan_pasien.id_tindakan', 'left');
+                    $this->db->join('tindakan2', 'tindakan2.id_tindakan2 = kunjungan_pasien.id_tindakan2', 'left');
+                    $this->db->where('MONTH(tanggal)', $bulan);
+                    $this->db->where('YEAR(tanggal)', $tahun);
+                    $this->db->where('status_pasien', 3);
+                    $this->db->order_by('jam_periksa.jam');
+                    $jumlahPasienBulanIni = $this->db->get()->num_rows();
+
+                    $this->db->select_sum('tagihan');
+                    $this->db->from('jadwal_periksa');
+                    $this->db->join('data_pasien', 'jadwal_periksa.id_pasien = data_pasien.id_pasien');
+                    $this->db->join('jam_periksa', 'jadwal_periksa.id_jam = jam_periksa.id_jam');
+                    $this->db->join('tanggal_pasien', 'jadwal_periksa.id_tanggal = tanggal_pasien.id_tanggal');
+                    $this->db->join('kunjungan_pasien', 'jadwal_periksa.id_jadwal = kunjungan_pasien.id_jadwal', 'left');
+                    $this->db->join('tindakan', 'tindakan.id_tindakan = kunjungan_pasien.id_tindakan', 'left');
+                    $this->db->join('tindakan2', 'tindakan2.id_tindakan2 = kunjungan_pasien.id_tindakan2', 'left');
+                    $this->db->where('DAY(tanggal)', $tgl);
+                    $this->db->where('MONTH(tanggal)', $bulan);
+                    $this->db->where('YEAR(tanggal)', $tahun);
+                    $this->db->where('status_pasien', 3);
+                    $this->db->order_by('jam_periksa.jam');
+                    $jumlahPendapatanHariIni = $this->db->get();
+
+                    foreach ($jumlahPendapatanHariIni->result() as $row) {
+                        $jumlahPendapatanHariIni = $row->tagihan;
+                    }
+
+                    $this->db->select_sum('tagihan');
+                    $this->db->from('jadwal_periksa');
+                    $this->db->join('data_pasien', 'jadwal_periksa.id_pasien = data_pasien.id_pasien');
+                    $this->db->join('jam_periksa', 'jadwal_periksa.id_jam = jam_periksa.id_jam');
+                    $this->db->join('tanggal_pasien', 'jadwal_periksa.id_tanggal = tanggal_pasien.id_tanggal');
+                    $this->db->join('kunjungan_pasien', 'jadwal_periksa.id_jadwal = kunjungan_pasien.id_jadwal', 'left');
+                    $this->db->join('tindakan', 'tindakan.id_tindakan = kunjungan_pasien.id_tindakan', 'left');
+                    $this->db->join('tindakan2', 'tindakan2.id_tindakan2 = kunjungan_pasien.id_tindakan2', 'left');
+                    $this->db->where('MONTH(tanggal)', $bulan);
+                    $this->db->where('YEAR(tanggal)', $tahun);
+                    $this->db->where('status_pasien', 3);
+                    $this->db->order_by('jam_periksa.jam');
+                    $jumlahPendapatanBulanIni = $this->db->get();
+
+                    foreach ($jumlahPendapatanBulanIni->result() as $row) {
+                        $jumlahPendapatanBulanIni = $row->tagihan;
+                    }
+
+                    ?>
+                    <div class="row justify-content-center" style="font-size:0.7rem;">
+                        <div class=" col-lg-3">
+                            <div class="card border-0 shadow">
+                                <div class="card-body bg-light cardEffect border-start border-warning border-2 rounded">
+                                    <div class="row">
+                                        <div class="col mr-2">
+                                            <a href="#" class="text-decoration-none fw-bold text-light">
+                                                <h6 class="text-uppercase text-warning" style="font-size:0.6rem;">Total Pasien hari ini</h6>
+                                                <h5 class="text-warning" style="font-size:0.7rem;"><?= $jumlahPasienHariIni ?> Orang</h5>
+                                            </a>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-user fa-2x text-warning"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card border-0 shadow">
+                                <div class="card-body bg-light cardEffect border-start border-success border-2 rounded">
+                                    <div class="row">
+                                        <div class="col mr-2">
+                                            <a href="#" class="text-decoration-none fw-bold text-light">
+                                                <h6 class="text-uppercase text-success" style="font-size:0.6rem;">Total Pendapatan hari ini</h6>
+                                                <h5 class="text-success" style="font-size:0.7rem;">Rp.<?= number_format($jumlahPendapatanHariIni, '0', ',', '.') ?> ,-</h5>
+                                            </a>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-donate fa-2x text-success"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card border-0 shadow">
+                                <div class="card-body bg-light cardEffect border-start border-primary border-2 rounded">
+                                    <div class="row">
+                                        <div class="col mr-2">
+                                            <a href="#" class="text-decoration-none fw-bold text-primary">
+                                                <h6 class="text-uppercase text-primary" style="font-size:0.6rem;">Total Pasien bulan ini</h6>
+                                                <h5 class="text-primary" style="font-size:0.7rem;"><?= $jumlahPasienBulanIni ?> Orang</h5>
+                                            </a>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-users fa-2x text-primary"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card border-0 shadow">
+                                <div class="card-body bg-light cardEffect border-start border-danger border-2 rounded">
+                                    <div class="row">
+                                        <div class="col mr-2">
+                                            <a href="#" class="text-decoration-none fw-bold text-danger">
+                                                <h6 class="text-uppercase text-danger" style="font-size:0.6rem;">Total pendapatan bulan ini</h6>
+                                                <h5 class="text-danger" style="font-size:0.7rem;">Rp. <?= number_format($jumlahPendapatanBulanIni, '0', ',', '.');  ?> ,-</h5>
+                                            </a>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-donate fa-2x text-danger"></i>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

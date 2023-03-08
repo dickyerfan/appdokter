@@ -44,7 +44,7 @@
                                                 <td class="fw-bold text-center"><?= $no++ ?></td>
                                                 <td class="fw-bold"><?= $row->nama_tindakan ?></td>
                                                 <td class="fw-bold text-end"><?= number_format($row->harga, '0', ',', '.')  ?></td>
-                                                <td class="fw-bold"><?= $row->ket_tindakan ?></td>
+                                                <td class="fw-bold text-center"><?= $row->ket_tindakan ?></td>
                                                 <td class="fw-bold text-center"><?= $statusPasien[$status] ?></td>
                                                 <td class="text-center">
                                                     <a data-bs-toggle="modal" data-bs-target="#editTindakan<?= $row->id_tindakan; ?>"><i class="fas fa-fw fa-edit text-primary" data-bs-toggle="tooltip" title="Edit Data"></i></a>

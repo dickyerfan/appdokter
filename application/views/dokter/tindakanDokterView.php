@@ -57,7 +57,6 @@
                                     </div>
                                     <div class="form-group mb-2">
                                         <label class="mb-1">Alamat Pasien :</label>
-                                        <!-- <input type="textarea" class="form-control kecilinFont" value="<?= $row->alamat_pasien ?>" disabled> -->
                                         <textarea class="form-control kecilinFont" disabled><?= $row->alamat_pasien ?></textarea>
                                     </div>
                                     <div class="form-group mb-2">
@@ -70,11 +69,7 @@
                                     </div>
                                 </div>
                             <?php endforeach; ?>
-                            <div class="col-lg-4 mt-2">
-                                <!-- <div class="form-group mb-2">
-                                    <label class="mb-1">Tanggal Periksa :</label>
-                                    <input type="text" class="form-control kecilinFont" value="<?= $tanggalFix ?>" disabled>
-                                </div> -->
+                            <div class="col-lg-8 mt-2">
                                 <div class="form-group mb-2">
                                     <?php $id_pasien = $this->uri->segment(3); ?>
                                     <input type="hidden" class="form-control" id="id_jadwal" name="id_jadwal" placeholder="Masukkan ID Pasien" value="<?= $id_pasien; ?>">
@@ -83,41 +78,61 @@
                                 <div class="form-group mb-2">
                                     <label for="jumlah" class="mb-1">Keluhan:</label>
                                     <textarea class="form-control kecilinFont" id="keluhan" name="keluhan" placeholder="Masukkan keluhan Pasien"></textarea>
-                                    <!-- <input type="text" class="form-control kecilinFont" id="keluhan" name="keluhan" placeholder="Masukkan keluhan Pasien" value="<?= set_value('keluhan'); ?>"> -->
                                     <small class="form-text text-danger pl-3"><?= form_error('keluhan'); ?></small>
                                 </div>
-                                <div class="form-group mb-2">
-                                    <label for="id_tindakan" class="form-label">Jenis Tindakan :</label>
-                                    <select name="id_tindakan" id="id_tindakan" class="form-select select2">
-                                        <option value=""></option>
-                                        <?php
-                                        $tindakan = $this->db->get('tindakan')->result();
-                                        foreach ($tindakan as $row) : ?>
-                                            <option value="<?= $row->id_tindakan ?>"><?= $row->nama_tindakan ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                    <small class="form-text text-danger pl-3"><?= form_error('id_tindakan'); ?></small>
+                                <div class="row">
+                                    <div class="col-lg-7">
+                                        <div class="form-group mb-2">
+                                            <label for="id_tindakan" class="form-label">Jenis Tindakan 1 :</label>
+                                            <select name="id_tindakan" id="id_tindakan" class="form-select select2">
+                                                <option value=""></option>
+                                                <?php
+                                                $tindakan = $this->db->get('tindakan')->result();
+                                                foreach ($tindakan as $row) : ?>
+                                                    <option value="<?= $row->id_tindakan ?>"><?= $row->nama_tindakan ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                            <small class="form-text text-danger pl-3"><?= form_error('id_tindakan'); ?></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="form-group mb-2">
+                                            <label for="jumlah" class="mb-2">Jumlah Tindakan 1 :</label>
+                                            <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan jumlah Tindakan 1" value="<?= set_value('jumlah'); ?>">
+                                            <small class="form-text text-danger pl-3"><?= form_error('jumlah'); ?></small>
+                                        </div>
+                                    </div>
                                 </div>
-                                <!-- <div class="form-group mb-2">
-                                    <label for="tagihan" class="form-label">Tagihan :</label>
-                                    <select name="tagihan" id="tagihan" class="form-select select2">
-                                        <option value=""></option>
-                                        <?php
-                                        $harga = $this->db->get('tindakan')->result();
-                                        foreach ($harga as $row) : ?>
-                                            <option value="<?= $row->harga ?>"><?= $row->harga ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                    <small class="form-text text-danger pl-3"><?= form_error('tagihan'); ?></small>
-                                </div> -->
-                                <div class="form-group mb-2">
-                                    <label for="jumlah" class="mb-1">Jumlah Tindakan :</label>
-                                    <input type="text" class="form-control kecilinFont" id="jumlah" name="jumlah" placeholder="Masukkan jumlah Tindakan" value="<?= set_value('jumlah'); ?>">
-                                    <small class="form-text text-danger pl-3"><?= form_error('jumlah'); ?></small>
+                                <div class="row">
+                                    <div class="col-lg-7">
+                                        <div class="form-group mb-2">
+                                            <label for="id_tindakan2" class="form-label">Jenis Tindakan 2 :</label>
+                                            <select name="id_tindakan2" id="id_tindakan2" class="form-select select2">
+                                                <option value=""></option>
+                                                <?php
+                                                // $tindakan2 = $this->db->query("SELECT nama_tindakan2 FROM tindakan2 
+                                                //     EXCEPT
+                                                //     SELECT nama_tindakan FROM nama_tindakan")->result();
+
+                                                $tindakan2 = $this->db->get('tindakan2')->result();
+                                                foreach ($tindakan2 as $row) : ?>
+                                                    <option value="<?= $row->id_tindakan2 ?>"><?= $row->nama_tindakan2 ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                            <small class="form-text text-danger pl-3"><?= form_error('id_tindakan2'); ?></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="form-group mb-2">
+                                            <label for="jumlah2" class="mb-2">Jumlah Tindakan 2 :</label>
+                                            <input type="text" class="form-control" id="jumlah2" name="jumlah2" placeholder="Masukkan jumlah Tindakan 2" value="<?= set_value('jumlah2'); ?>">
+                                            <small class="form-text text-danger pl-3"><?= form_error('jumlah2'); ?></small>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group mb-2">
-                                    <label for="ket_kunjungan" class="mb-1">Keterangan :</label>
-                                    <input type="text" class="form-control kecilinFont" id="ket_kunjungan" name="ket_kunjungan" placeholder="Masukkan Keterangan" value="<?= set_value('ket_kunjungan'); ?>">
+                                    <label for="ket_kunjungan" class="mb-2">Keterangan :</label>
+                                    <input type="text" class="form-control" id="ket_kunjungan" name="ket_kunjungan" placeholder="Masukkan Keterangan" value="<?= set_value('ket_kunjungan'); ?>">
                                     <small class="form-text text-danger pl-3"><?= form_error('ket_kunjungan'); ?></small>
                                 </div>
                             </div>

@@ -67,24 +67,11 @@ class Model_dashboard extends CI_Model
         $this->db->insert('kunjungan_pasien', $data);
     }
 
-    // public function getPasienDokter()
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('kunjungan_pasien');
-    //     $this->db->join('jadwal_periksa', 'kunjungan_pasien.id_jadwal = jadwal_periksa.id_jadwal');
-    //     $this->db->join('proses', 'kunjungan_pasien.id_proses = proses.id_proses');
-    //     return $this->db->get()->result();
-    // }
+    public function deleteJadwalPasien()
+    {
+        $id_jadwal = $_POST['id_jadwal'];
 
-    // public function inputPasienDokter()
-    // {
-    //     $data = [
-    //         'pengirim' => $this->session->userdata('level'),
-    //         'penerima' => 'dokter',
-    //         'isi_pesan' => $_POST['nama_pasien'],
-    //         'status' => ' ',
-    //         'tgl_kirim' => date('Y-m-d H:i:s')
-    //     ];
-    //     $this->db->insert('pesan', $data);
-    // }
+        $this->db->where('id_jadwal', $id_jadwal);
+        $this->db->delete('jadwal_periksa');
+    }
 }

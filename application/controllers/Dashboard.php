@@ -122,7 +122,7 @@ class Dashboard extends CI_Controller
             $this->session->set_flashdata(
                 'info',
                 '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Error,</strong> Status Pasien Gagal di edit
+                    <strong>Error,</strong> Status Pasien Gagal di update
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                     </button>
                 </div>'
@@ -144,11 +144,22 @@ class Dashboard extends CI_Controller
                 $cekStatus = $this->db->get_where('jadwal_periksa', ['id_jadwal' => $this->input->post('id_jadwal')])->row();
                 if ($cekStatus->status_pasien == 2) {
                     $this->Model_dashboard->updateTindakanPasien();
+                } elseif ($cekStatus->status_pasien == 4) {
+                    $this->Model_dashboard->deleteJadwalPasien();
+                    $this->session->set_flashdata(
+                        'info',
+                        '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Sukses,</strong> Jadwal Pasien berhasil di hapus
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                        </div>'
+                    );
+                    redirect('Dashboard');
                 }
                 $this->session->set_flashdata(
                     'info',
                     '<div class="alert alert-primary alert-dismissible fade show" role="alert">
-                        <strong>Sukses,</strong> Status Pasien berhasil di edit
+                        <strong>Sukses,</strong> Status Pasien berhasil di update
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button>
                     </div>'

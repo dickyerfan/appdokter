@@ -18,7 +18,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row g-1">
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <?php foreach ($pasienDetail as $row) :
                                 $tglLahir = new DateTime($row->tgl_lahir);
                                 $today = new DateTime('today');
@@ -50,7 +50,7 @@
                                 </div>
                             <?php endforeach; ?>
                         </div>
-                        <div class="col-lg-8">
+                        <div class="col-lg-9">
                             <div class="card p-1 shadow">
                                 <div class="table-responsive" style="font-size: 0.7rem;">
                                     <table id="example" class="table table-hover table-striped table-bordered table-sm" width="100%" cellspacing="0">
@@ -59,7 +59,9 @@
                                                 <th class=" text-center">No</th>
                                                 <th class=" text-center">Tanggal</th>
                                                 <th class=" text-center">Keluhan</th>
-                                                <th class=" text-center">Tindakan</th>
+                                                <th class=" text-center">Tindakan 1</th>
+                                                <th class=" text-center">Jumlah</th>
+                                                <th class=" text-center">Tindakan 2</th>
                                                 <th class=" text-center">Jumlah</th>
                                                 <th class=" text-center">Tagihan</th>
                                             </tr>
@@ -94,6 +96,8 @@
                                                     <td class=""><?= $row->keluhan ?></td>
                                                     <td class=""><?= $row->nama_tindakan ?></td>
                                                     <td class="text-center"><?= $row->jumlah ?></td>
+                                                    <td class=""><?= $row->nama_tindakan2 ?></td>
+                                                    <td class="text-center"><?= $row->jumlah2 ?></td>
                                                     <td class=" text-end"><?= number_format($row->tagihan, '0', ',', '.')  ?>,-</td>
                                                 </tr>
                                             <?php endforeach; ?>

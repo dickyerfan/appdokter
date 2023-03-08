@@ -86,8 +86,9 @@ class Model_daftarPasien extends CI_Model
         $this->db->join('jam_periksa', 'jadwal_periksa.id_jam = jam_periksa.id_jam');
         $this->db->join('tanggal_pasien', 'jadwal_periksa.id_tanggal = tanggal_pasien.id_tanggal');
         $this->db->join('tindakan', 'tindakan.id_tindakan = kunjungan_pasien.id_tindakan');
+        $this->db->join('tindakan2', 'tindakan2.id_tindakan2 = kunjungan_pasien.id_tindakan2', 'left');
         $this->db->where('jadwal_periksa.id_pasien', $id);
-        $this->db->order_by('jadwal_periksa.id_tanggal');
+        $this->db->order_by('jadwal_periksa.id_tanggal', 'DESC');
         return $this->db->get()->result();
     }
     public function getPasienDetail($id)

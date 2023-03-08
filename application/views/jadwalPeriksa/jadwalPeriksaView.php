@@ -162,7 +162,7 @@
                                                                     $sisaJam = 'full';
                                                                 }
                                                                 ?>
-                                                                <p style="font-size: 0.5rem;"><?= $sisaJam ?></p>
+                                                                <p style="font-size: 0.5rem;"><?= $sisaJam; ?></p>
                                                             </div>
                                                         </div>
                                                         <div class="row">

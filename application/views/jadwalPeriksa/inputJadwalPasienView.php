@@ -35,7 +35,7 @@
                                         $id_tanggal = $this->uri->segment(3);
                                         $jamKosong = $this->db->query("SELECT jam_periksa.id_jam, jam FROM jam_periksa WHERE ket_jam = 'praktek'
                                         EXCEPT
-                                        SELECT jam_periksa.id_jam, jam FROM jadwal_periksa JOIN jam_periksa ON jam_periksa.id_jam = jadwal_periksa.id_jam WHERE jadwal_periksa.id_tanggal = '$id_tanggal'
+                                        SELECT jam_periksa.id_jam, jam FROM jadwal_periksa JOIN jam_periksa ON jam_periksa.id_jam = jadwal_periksa.id_jam WHERE jadwal_periksa.id_tanggal = '$id_tanggal'  ORDER BY jam ASC
                                         ")->result();
 
                                         foreach ($jamKosong as $row) : ?>

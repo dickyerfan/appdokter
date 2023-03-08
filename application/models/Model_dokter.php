@@ -15,6 +15,7 @@ class Model_dokter extends CI_Model
         $this->db->join('tanggal_pasien', 'jadwal_periksa.id_tanggal = tanggal_pasien.id_tanggal');
         $this->db->join('kunjungan_pasien', 'jadwal_periksa.id_jadwal = kunjungan_pasien.id_jadwal', 'left');
         $this->db->join('tindakan', 'tindakan.id_tindakan = kunjungan_pasien.id_tindakan', 'left');
+        $this->db->join('tindakan2', 'tindakan2.id_tindakan2 = kunjungan_pasien.id_tindakan2', 'left');
         $this->db->where('DAY(tanggal)', $tgl);
         $this->db->where('MONTH(tanggal)', $bulan);
         $this->db->where('YEAR(tanggal)', $tahun);
@@ -73,8 +74,10 @@ class Model_dokter extends CI_Model
 
         $data = [
             'id_tindakan' => $this->input->post('id_tindakan', true),
+            'id_tindakan2' => $this->input->post('id_tindakan2', true),
             'keluhan' => $this->input->post('keluhan', true),
             'jumlah' => $this->input->post('jumlah', true),
+            'jumlah2' => $this->input->post('jumlah2', true),
             'ket_kunjungan' => $this->input->post('ket_kunjungan', true),
         ];
         $this->db->where('id_jadwal', $id_jadwal);
@@ -85,9 +88,12 @@ class Model_dokter extends CI_Model
     {
         $id_jadwal = $this->uri->segment(3);
         $jumlah = $this->input->post('jumlah');
+        $jumlah2 = $this->input->post('jumlah2');
         $diskon = intval($this->input->post('diskon'));
         $tagihan = intval($this->input->post('tagihan'));
-        $totalTagihan = $jumlah * $tagihan;
+        $tagihan2 = intval($this->input->post('tagihan2'));
+
+        $totalTagihan = ($jumlah * $tagihan) + ($jumlah2 * $tagihan2);
         $totaldibayar = $totalTagihan - $diskon;
 
 

@@ -70,11 +70,10 @@ class JadwalPeriksa extends CI_Controller
         }
     }
 
-    public function detailPraktek($id_tanggal, $id_jam)
+    public function detailPraktek($id_tanggal)
     {
         $data['title'] = 'Detail Jadwal Praktek';
         $data['detailPasien'] = $this->Model_jadwalPeriksa->getJadwalPasien($id_tanggal);
-        // $data['jamKosong'] = $this->Model_jadwalPeriksa->getJamKosong($id_jam);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar');

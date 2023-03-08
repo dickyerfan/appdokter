@@ -161,7 +161,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Modal Input Jam -->
+                    <!-- End Modal Input Jam -->
 
                     <!-- Modal Edit Jam -->
                     <?php $no = 0;
@@ -192,7 +192,7 @@
                             </div>
                         </div>
                     <?php endforeach; ?>
-                    <!-- Modal Edit Jam -->
+                    <!-- End Modal Edit Jam -->
 
                     <!-- Modal Edit Kehadiran -->
                     <?php $no = 0;
@@ -210,7 +210,6 @@
                                                 <input type="hidden" readonly value="<?= $row->id_jadwal; ?>" name="id_jadwal" id="id_jadwal" class="form-control">
                                                 <div class="mb-2">
                                                     <label class="form-label">Status Pasien</label>
-                                                    <!-- <input type="text" name="jam" autocomplete="off" value="<?= $row->status_pasien; ?>" placeholder="Masukkan Jam Praktek" class="form-control"> -->
                                                     <select name="status_pasien" id="status_pasien" class="form-control select2">
                                                         <option value="0" <?= $row->status_pasien == '0' ? 'selected' : '' ?>>Belum Hadir</option>
                                                         <option value="1" <?= $row->status_pasien == '1' ? 'selected' : '' ?>>Hadir</option>
@@ -225,7 +224,7 @@
                             </div>
                         </div>
                     <?php endforeach; ?>
-                    <!-- Modal Edit Kehadiran -->
+                    <!-- End Modal Edit Kehadiran -->
                 </div>
             </div>
         </div>
