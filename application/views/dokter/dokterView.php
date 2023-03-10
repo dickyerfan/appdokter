@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header shadow">
                     <div class="row">
-                        <div class="col-9">
+                        <div class="col-7 col-lg-8">
                             <h6 class="fw-bold text-uppercase mt-2 text-primary" style="text-shadow:1px 1px 2px black;">
                                 <?php
                                 date_default_timezone_set('Asia/Jakarta');
@@ -41,8 +41,8 @@
                                 ?>
                             </h6>
                         </div>
-                        <div class="col-3">
-                            <h6 class="btn btn-primary text-light float-end" id="jam" style="text-shadow:1px 1px 2px black; font-size:0.8rem;"></h6>
+                        <div class="col-5 col-lg-4">
+                            <h6 class="btn btn-light text-secondary float-end" id="jam" style="font-size:.9rem; border-radius: 25px; box-shadow: inset 3px 3px 5px #cbced1, inset -8px -8px 8px #fff; "></h6>
                         </div>
                     </div>
                 </div>
@@ -192,7 +192,7 @@
 
                     ?>
                     <div class="row justify-content-center" style="font-size:0.7rem;">
-                        <div class=" col-lg-3">
+                        <div class=" col-md-6 col-lg-3 mb-1">
                             <div class="card border-0 shadow">
                                 <div class="card-body bg-light cardEffect border-start border-warning border-2 rounded">
                                     <div class="row">
@@ -209,7 +209,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-md-6 col-lg-3 mb-1">
                             <div class="card border-0 shadow">
                                 <div class="card-body bg-light cardEffect border-start border-success border-2 rounded">
                                     <div class="row">
@@ -226,7 +226,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-md-6 col-lg-3 mb-1">
                             <div class="card border-0 shadow">
                                 <div class="card-body bg-light cardEffect border-start border-primary border-2 rounded">
                                     <div class="row">
@@ -243,7 +243,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-md-6 col-lg-3 mb-1">
                             <div class="card border-0 shadow">
                                 <div class="card-body bg-light cardEffect border-start border-danger border-2 rounded">
                                     <div class="row">
@@ -261,6 +261,26 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- <div class="row mt-2">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card shadow">
+                                <img src="<?= base_url('assets/img/komputer.jpg') ?>" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card Title</h5>
+                                    <p class="card-text">This is a sample card with some text.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        </div>
+                                        <small class="text-muted">9 mins</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
                     <!-- Modal Input Jam -->
                     <!-- <div class="modal fade" id="inputJam" tabindex="-1" aria-labelledby="exampleInputJam" aria-hidden="true">
                         <div class="modal-dialog">

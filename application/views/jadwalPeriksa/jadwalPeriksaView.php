@@ -7,10 +7,10 @@
             <div class="card">
                 <div class="card-header shadow">
                     <div class="row">
-                        <div class="col-9">
+                        <div class="col-6">
                             <div class="fw-bold text-uppercase"><?= $title ?></div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-6">
                             <button id="belum" class="btn btn-success btn-sm float-end"><i class="fas fa-calendar-alt"></i> Pilih Waktu</button>
                         </div>
                     </div>

@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header mb-2 shadow">
                     <div class="row">
-                        <div class="col-9">
+                        <div class="col-6">
                             <h5 class="fw-bold text-uppercase mt-2 text-primary" style="text-shadow:1px 1px 2px black;">
                                 <?php
                                 date_default_timezone_set('Asia/Jakarta');
@@ -41,7 +41,7 @@
                                 ?>
                             </h5>
                         </div>
-                        <div class="col-3">
+                        <div class="col-6">
                             <!-- <a href="<?= base_url('dashboard/ekspor') ?>" target="_blank" class="btn btn-success btn-sm float-end"><i class="fas fa-file-alt"></i> Export PDF</a> -->
                             <!-- <a id="belum"><button class="btn btn-warning btn-sm float-end"><i class="fas fa-calendar-alt"></i> Pilih Tanggal</button></a> -->
                             <h2 class="btn btn-primary text-light float-end" id="jam" style="text-shadow:1px 1px 2px black;"></h2>

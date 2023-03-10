@@ -19,7 +19,7 @@ class Auth extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Login';
-            $this->load->view('auth/view_login', $data);
+            $this->load->view('auth/view_loginBaru', $data);
         } else {
             $cek_nama_pengguna = $this->db->get_where('user', ['username' => $this->input->post('username', true)])->row();
             if ($cek_nama_pengguna) { //Jika nama_pengguna benar

@@ -6,13 +6,21 @@
             <div class="card">
                 <div class="card-header mb-2 shadow">
                     <div class="row">
-                        <div class="col-9">
+                        <div class="col-6">
                             <div class="fw-bold text-uppercase"><?= $title ?></div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-6">
                             <!-- <a href="<?= base_url('dashboard/ekspor') ?>" target="_blank" class="btn btn-success btn-sm float-end"><i class="fas fa-file-alt"></i> Export PDF</a> -->
                             <!-- <button class="btn btn-warning btn-sm float-end mb-1" data-bs-toggle="modal" data-bs-target="#inputPasien"><i class="fas fa-plus"></i> Input Pasien</button> -->
-                            <a href="<?= base_url('daftarPasien/inputPasien'); ?>"><button class="btn btn-warning btn-sm float-end"><i class="fas fa-plus"></i> Input Pasien Baru</button></a>
+                            <a href="<?= base_url('daftarPasien/inputPasien'); ?>"><button class="btn btn-warning btn-sm float-end" style="background: #f0f0f0;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px #eee, 
+    inset 8px 8px 8px #ffffff, 
+    inset -8px -8px 8px #cbced1;
+  color: #333;
+  font-size: 1rem;
+  padding: .3rem .7rem; font-size:.7rem" onMouseOver="this.style.backgroundColor='#cbced1'" onMouseOut="this.style.backgroundColor='#ffffff'"><i class="fas fa-plus"></i> Input Pasien Baru</button></a>
                         </div>
                     </div>
                 </div>

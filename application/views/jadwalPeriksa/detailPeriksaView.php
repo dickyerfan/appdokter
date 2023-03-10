@@ -6,10 +6,10 @@
             <div class="card">
                 <div class="card-header shadow">
                     <div class="row">
-                        <div class="col-9">
+                        <div class="col-6">
                             <div class="fw-bold text-uppercase"><?= $title ?></div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-6">
                             <!-- <a href="<?= base_url('dashboard/ekspor') ?>" target="_blank" class="btn btn-success btn-sm float-end"><i class="fas fa-file-alt"></i> Export PDF</a> -->
                             <!-- <a id="belum"><button class="btn btn-warning btn-sm float-end"><i class="fas fa-calendar-alt"></i> Pilih Tanggal</button></a> -->
                             <a href="<?= base_url('jadwalPeriksa'); ?>" id="kembali"><button class="btn btn-primary btn-sm float-end"><i class="fas fa-reply"></i> Kembali</button></a>
@@ -19,7 +19,11 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-2">
-                            <h3 class="text-uppercase text-center fw-bold judulPraktek" style="margin-top:21px; margin-bottom: 21px;">Jam Praktek</h3>
+                            <div class="row">
+                                <div class="col-12 col-lg-12">
+                                    <h3 class="text-uppercase text-center fw-bold judulPraktek" style="margin-top: .1rem; margin-bottom:.95rem;">Jam Praktek</h3>
+                                </div>
+                            </div>
                             <div class="table-responsive" style="font-size: 0.7rem;">
                                 <table id="example2" class="table table-hover table-striped table-bordered table-sm" width="100%" cellspacing="0">
                                     <thead>
@@ -64,8 +68,7 @@
                                 </table>
                             </div>
                         </div>
-                        <!-- <?php echo $jamHadir; ?> -->
-                        <div class="col-xl-10 mb-2">
+                        <div class="col-lg-10 mb-2">
                             <?php $tanggal = $this->uri->segment(4);
                             $pecahkan = explode('-', $tanggal);
                             $bln = $pecahkan[1];
@@ -113,10 +116,12 @@
                             }
                             $tanggalFix = $tgl . ' ' . $bln . ' ' . $tahun;
                             ?>
-                            <h3 class="text-uppercase text-center fw-bold judulPraktek">Daftar Pasien <?= $tanggalFix ?></h3>
+
                             <div class="row">
-                                <div class="col-md-6"></div>
-                                <div class="col-md-6">
+                                <div class="col-6 col-lg-9">
+                                    <h3 class="text-uppercase text-center fw-bold judulPraktek">Daftar Pasien <?= $tanggalFix ?></h3>
+                                </div>
+                                <div class="col-6 col-lg-3">
                                     <?php $id_tanggal = $this->uri->segment(3) ?>
                                     <a href="<?= base_url('jadwalPeriksa/inputJadwalPasien') ?>/<?= $id_tanggal ?>" class="btn btn-warning btn-sm float-end mb-1"><i class="fas fa-plus"></i> Tambah Jadwal Pasien</a>
                                     <!-- <button class="btn btn-warning btn-sm float-end mb-1" data-bs-toggle="modal" data-bs-target="#inputPasien"><i class="fas fa-plus"></i> Tambah Jadwal Pasien</button> -->

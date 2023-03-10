@@ -53,10 +53,10 @@
                                 break;
                         }
                         ?>
-                        <div class="col-9">
+                        <div class="col-6">
                             <div class="fw-bold text-uppercase"><?= $title; ?> <?= $bulanPilih . ' ' . $tahunPilih ?></div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-6">
                             <button id="belum" class="btn btn-warning btn-sm float-end"><i class="fas fa-calendar-alt"></i> Pilih Bulan</button>
                             <!-- <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#pilihTanggal"><i class="fas fa-calendar-alt"></i> Pilih Tanggal</button> -->
                         </div>

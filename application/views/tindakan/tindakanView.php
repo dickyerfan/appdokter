@@ -6,10 +6,10 @@
             <div class="card">
                 <div class="card-header mb-2 shadow">
                     <div class="row">
-                        <div class="col-lg-9">
+                        <div class="col-6">
                             <h3 class="text-uppercase judulPraktek">Daftar Tindakan</h3>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-6">
                             <button class="btn btn-warning btn-sm float-end" data-bs-toggle="modal" data-bs-target="#inputTindakan"><i class="fas fa-plus"></i> Input Data Baru</button>
                         </div>
                     </div>
