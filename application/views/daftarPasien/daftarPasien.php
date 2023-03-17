@@ -12,7 +12,7 @@
                         <div class="col-6">
                             <!-- <a href="<?= base_url('dashboard/ekspor') ?>" target="_blank" class="btn btn-success btn-sm float-end"><i class="fas fa-file-alt"></i> Export PDF</a> -->
                             <!-- <button class="btn btn-warning btn-sm float-end mb-1" data-bs-toggle="modal" data-bs-target="#inputPasien"><i class="fas fa-plus"></i> Input Pasien</button> -->
-                            <a href="<?= base_url('daftarPasien/inputPasien'); ?>"><button class="btn btn-warning btn-sm float-end" style="background: #f0f0f0;
+                            <a href="<?= base_url('daftarPasien/inputPasien'); ?>"><button class="btn btn-warning btn-sm float-end cardEffect" style="background: #f0f0f0;
   border: none;
   border-radius: 20px;
   box-shadow: 2px 2px 2px #eee, 

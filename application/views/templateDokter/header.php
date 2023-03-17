@@ -57,6 +57,7 @@
         }
 
         .cardEffect:hover {
+            transition: transform 0.5s;
             box-shadow: 2px 2px 10px rgb(0, 0, 0);
             transform: translateY(-6px);
         }

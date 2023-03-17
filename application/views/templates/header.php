@@ -26,6 +26,12 @@
             transform: translateY(-6px);
         }
 
+        .cardEffect:hover {
+            transition: transform 0.5s;
+            box-shadow: 2px 2px 10px rgb(0, 0, 0);
+            transform: scale(1.1);
+        }
+
         .judul {
             display: none;
         }

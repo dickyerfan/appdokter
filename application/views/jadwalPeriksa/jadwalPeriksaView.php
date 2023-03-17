@@ -132,7 +132,7 @@
                                     <div class="row justify-content-center">
                                         <?php foreach ($jadwalPeriksa as $row) : ?>
                                             <div class="col-xl-<?= $bootstrapColWidth; ?> g-2 mb-1">
-                                                <div class="card border-1 shadow" style="height:100% ;">
+                                                <div class="card border-1 shadow cardEffect" style="height:100% ;">
                                                     <div class="card-body border-top border-warning border-5 rounded-top">
                                                         <?php
                                                         $hari = date('D', strtotime($row->tanggal));

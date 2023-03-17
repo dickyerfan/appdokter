@@ -42,7 +42,7 @@
                             </h6>
                         </div>
                         <div class="col-5 col-lg-4">
-                            <h6 class="btn btn-light text-secondary float-end" id="jam" style="font-size:.9rem; border-radius: 25px; box-shadow: inset 3px 3px 5px #cbced1, inset -8px -8px 8px #fff; "></h6>
+                            <h6 class="btn btn-light text-secondary float-end" id="jam" style="font-size:.9rem; border-radius: 25px; box-shadow: inset 3px 3px 5px #cbced1, inset -8px -8px 8px #fff; padding: 7px 20px; margin-top:5px;"></h6>
                         </div>
                     </div>
                 </div>
@@ -193,7 +193,7 @@
                     ?>
                     <div class="row justify-content-center" style="font-size:0.7rem;">
                         <div class=" col-md-6 col-lg-3 mb-1">
-                            <div class="card border-0 shadow">
+                            <div class="card border-0 ">
                                 <div class="card-body bg-light cardEffect border-start border-warning border-2 rounded">
                                     <div class="row">
                                         <div class="col mr-2">
@@ -210,7 +210,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-3 mb-1">
-                            <div class="card border-0 shadow">
+                            <div class="card border-0 ">
                                 <div class="card-body bg-light cardEffect border-start border-success border-2 rounded">
                                     <div class="row">
                                         <div class="col mr-2">
@@ -227,7 +227,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-3 mb-1">
-                            <div class="card border-0 shadow">
+                            <div class="card border-0 ">
                                 <div class="card-body bg-light cardEffect border-start border-primary border-2 rounded">
                                     <div class="row">
                                         <div class="col mr-2">
@@ -244,7 +244,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-3 mb-1">
-                            <div class="card border-0 shadow">
+                            <div class="card border-0 ">
                                 <div class="card-body bg-light cardEffect border-start border-danger border-2 rounded">
                                     <div class="row">
                                         <div class="col mr-2">

@@ -42,9 +42,8 @@
                             </h5>
                         </div>
                         <div class="col-6">
-                            <!-- <a href="<?= base_url('dashboard/ekspor') ?>" target="_blank" class="btn btn-success btn-sm float-end"><i class="fas fa-file-alt"></i> Export PDF</a> -->
-                            <!-- <a id="belum"><button class="btn btn-warning btn-sm float-end"><i class="fas fa-calendar-alt"></i> Pilih Tanggal</button></a> -->
-                            <h2 class="btn btn-primary text-light float-end" id="jam" style="text-shadow:1px 1px 2px black;"></h2>
+                            <!-- <h2 class="btn btn-primary text-light float-end" id="jam" style="text-shadow:1px 1px 2px black;"></h2> -->
+                            <h6 class="btn btn-light text-secondary float-end" id="jam" style="font-size:.9rem; border-radius: 25px; box-shadow: inset 3px 3px 5px #cbced1, inset -8px -8px 8px #fff; padding: 7px 20px; margin-top:5px;"></h6>
                         </div>
                     </div>
                 </div>

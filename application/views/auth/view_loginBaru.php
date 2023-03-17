@@ -40,7 +40,7 @@
         </form>
         <div class="text-center fs-6 forFooter">
             <!-- <a href="#">Forget password?</a> or <a href="#">Sign up</a> -->
-            <a href="index.html">Built with <span>&hearts;</span> by DIE Art'S Production 2023</a>
+            <!-- <a href="index.html">Built with <span>&hearts;</span> by DIE Art'S Production 2023</a> -->
         </div>
     </div>
 </body>
