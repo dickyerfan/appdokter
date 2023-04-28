@@ -208,6 +208,80 @@
         });
     });
 </script> -->
+
+<script>
+    getData();
+
+    function getData() {
+        $.ajax({
+            type: 'ajax',
+            url: '<?= base_url('daftarPasienAjax/tampilPasien') ?>',
+            async: false,
+            dataType: 'json',
+            success: function(data) {
+                let html = '';
+                let i;
+                for (i = 0; i < data.length; i++) {
+                    const tanggal = data[i].tgl_lahir;
+                    const tanggalBaru = tanggal.split("-");
+                    const bulan = tanggalBaru[1];
+                    let bulanIndo;
+                    switch (bulan) {
+                        case "01":
+                            bulanIndo = "Januari";
+                            break;
+                        case "02":
+                            bulanIndo = "Februari";
+                            break;
+                        case "03":
+                            bulanIndo = "Maret";
+                            break;
+                        case "04":
+                            bulanIndo = "April";
+                            break;
+                        case "05":
+                            bulanIndo = "Mei";
+                            break;
+                        case "06":
+                            bulanIndo = "Juni";
+                            break;
+                        case "07":
+                            bulanIndo = "Juli";
+                            break;
+                        case "08":
+                            bulanIndo = "Agustus";
+                            break;
+                        case "09":
+                            bulanIndo = "September";
+                            break;
+                        case "10":
+                            bulanIndo = "Oktober";
+                            break;
+                        case "11":
+                            bulanIndo = "November";
+                            break;
+                        case "12":
+                            bulanIndo = "Desember";
+                            break;
+                    }
+                    const tanggalFix = tanggalBaru[2] + ' ' + bulanIndo + ' ' + tanggalBaru[0];
+                    html += '<tr>' +
+                        '<td>' + data[i].nama_pasien + '</td>' +
+                        '<td>' + data[i].alamat_pasien + '</td>' +
+                        '<td>' + data[i].telepon_pasien + '</td>' +
+                        '<td>' + data[i].jenkel_pasien + '</td>' +
+                        '<td>' + data[i].no_ktp + '</td>' +
+                        '<td>' + tanggalFix + '</td>' +
+                        '</tr>';
+                }
+                $('#showData').html(html);
+
+
+            }
+        });
+    }
+</script>
+
 </body>
 
 </html>

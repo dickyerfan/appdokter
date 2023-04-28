@@ -28,6 +28,10 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt fa-fw"></i></div>
                         <div style="font-size: 0.8rem;"> Logout</div>
                     </a>
+                    <a class="nav-link" href="<?= base_url('daftarPasienAjax') ?>">
+                        <div class="sb-nav-link-icon"><i class="fas fa-users fa-fw"></i></div>
+                        <div style="font-size: 0.8rem;"> Daftar Pasien Ajax</div>
+                    </a>
                 </div>
             </div>
             <div class="sb-sidenav-footer">
